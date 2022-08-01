@@ -5,7 +5,7 @@ const gallery = document.querySelector(".gallery");
 
 for (let i = 0; i < galleryItems.length; i++) { 
 
-const galleryHtml = `<div class="gallery__item">
+    const galleryHtml = `<div class="gallery__item">
   <a class="gallery__link" href="${galleryItems[i].original}">
     <img
       class="gallery__image"
@@ -15,11 +15,21 @@ const galleryHtml = `<div class="gallery__item">
     />
   </a>
 </div>`
-
+   
     gallery.innerHTML += galleryHtml;
-    
-}
 
+}
+   gallery.addEventListener("click", (event) => {
+
+
+        event.preventDefault();
+        const target = event.target.getAttribute(`data-source`);
+        const instance = basicLightbox.create(`<img src="${target}" width="800" height="600">`);
+        instance.show();
+
+    })
+ 
+ 
 
    
 
